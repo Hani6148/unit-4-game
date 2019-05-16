@@ -1,0 +1,51 @@
+#wall{
+    background-image: url(../images/UFC5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background  3s ease;
+    
+    
+
+}
+
+#blink{
+    background-color: transparent;
+    position: absolute;
+    top: 74%;
+    left: 45%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 450px;
+    height: 100px;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: lavender;
+    font-size: x-large;
+    z-index: 1000;
+}
+
+.car{
+    width: inherit;
+    
+    visibility: hidden;
+    transition:  3s ease;
+    background-color:inherit;
+    
+}
+.image{
+    width: 295px;
+    height: 184px;
+}
+
+.card-title{
+    font-family: 'Anton', sans-serif;
+
+    color:goldenrod;
+
+    font-size: x-large;
+    font-weight: bold;
+}
+.card{
+    background-color: lightgray;
+    z-index: 1000;
+    opacity: 0.9;
+}
