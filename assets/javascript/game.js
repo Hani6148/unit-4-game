@@ -1,11 +1,12 @@
 
-var fighter=["conor","khabib","tony","dustin"];
+var fighter=["vitiate","vader","yoda","luke"];
+var player="";
 setInterval(blink, 1200);
 $("#blink").on("click",changeWall);
 
 function changeWall(){
   $("#blink").remove();
-  $("#wall").css("background-image", "url(assets/images/octa.jpg");
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
  
   gamescreen();
 
@@ -14,112 +15,125 @@ function changeWall(){
 
 function gamescreen(){
   $(".car").css("visibility", "visible");
-  var bruceB= document.createElement("audio");
+  var laser= document.createElement("audio");
   var song= document.createElement("audio");
-   bruceB.setAttribute("src","assets/sound/time.mp3");
-  bruceB.play();
+   laser.setAttribute("src","assets/sound/laser.mp3");
+  laser.play();
    
-   
-
+  setTimeout(function(){$("#blink2").css("visibility", "visible");},1500);
   
-  song.setAttribute("src","assets/sound/song.mp3");
-  setTimeout(function () {
+  
+  song.setAttribute("src","assets/sound/starmain.mp3");
+  
     song.play();
 
-}, 3000);
 
 
-$(".conor").hover(function(){
-  $(".conor").css("background-color", "gold");
-  $('.conor').css("color", "blue");
-  $("#wall").css("background-image", "url(assets/images/UFC3.jpg");
-  $('.conor').css("cursor", "pointer");
+
+$(".vitiate").hover(function(){
+  $(".vitiate").css("background-color", "springgreen");
+  $('.vitiate').css("color", "blue");
+  $("#wall").css("background-image", "url(assets/images/vitiatew.jpg");
+  $('.vitiate').css("cursor", "pointer");
 
 }, function(){
-  $(".conor").css("background-color", "lightgray");
-  $('.conor ').css("color", "black");
-  $("#wall").css("background-image", "url(assets/images/octa.jpg");
+  $(".vitiate").css("background-color", "lightgray");
+  $('.vitiate ').css("color", "black");
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
 });
-$(".khabib").hover(function(){
-  $(".khabib").css("background-color", "gold");
-  $('.khabib ').css("color", "blue");
-  $("#wall").css("background-image", "url(assets/images/khabib2.jpg");
-  $('.khabib').css("cursor", "pointer");
+$(".vader").hover(function(){
+  $(".vader").css("background-color", "springgreen");
+  $('.vader ').css("color", "blue");
+  $("#wall").css("background-image", "url(assets/images/vaderw.jpg");
+  $('.vader').css("cursor", "pointer");
 
 }, function(){
-  $(".khabib").css("background-color", "lightgray");
-  $('.khabib').css("color", "black");
-  $("#wall").css("background-image", "url(assets/images/octa.jpg");
+  $(".vader").css("background-color", "lightgray");
+  $('.vader').css("color", "black");
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
 });
-$(".tony").hover(function(){
-  $(".tony").css("background-color", "gold");
-  $('.tony').css("color", "blue");
-  $("#wall").css("background-image", "url(assets/images/tony3.jpg");
-  $('.tony').css("cursor", "pointer");
+$(".yoda").hover(function(){
+  $(".yoda").css("background-color", "springgreen");
+  $('.yoda').css("color", "blue");
+  $("#wall").css("background-image", "url(assets/images/yodaw.jpg");
+  $('.yoda').css("cursor", "pointer");
 
 }, function(){
-  $(".tony").css("background-color", "lightgray");
-  $('.tony ').css("color", "black");
-  $("#wall").css("background-image", "url(assets/images/octa.jpg");
-
-});
-
-$(".dustin").hover(function(){
-  $(".dustin").css("background-color", "gold");
-  $('.dustin').css("color", "blue");
-  $("#wall").css("background-image", "url(assets/images/dustin.jpg");
-  $('.dustin').css("cursor", "pointer");
-
-}, function(){
-  $(".dustin").css("background-color", "lightgray");
-  $('.dustin ').css("color", "black");
-  $("#wall").css("background-image", "url(assets/images/octa.jpg");
+  $(".yoda").css("background-color", "lightgray");
+  $('.yoda ').css("color", "black");
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
 });
 
-$(".conor").on("click",function(){
-  
-    $(".conor").animate({
+$(".luke").hover(function(){
+  $(".luke").css("background-color", "springgreen");
+  $('.luke').css("color", "blue");
+  $("#wall").css("background-image", "url(assets/images/lukew.jpg");
+  $('.luke').css("cursor", "pointer");
+
+}, function(){
+  $(".luke").css("background-color", "lightgray");
+  $('.luke ').css("color", "black");
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+});
+
+$(".vitiate").on("click",function(){
+    player="vitiate"
+    $(".vitiate").animate({
       left: "+=800px"
     }, "normal");
-    $(".conor").off("click");
+    $(".vitiate").off("click");
+    var removed = fighter.splice(0, 1);
+    match();
   });
   
   
-  $(".khabib").click(function(){
-  
-    $(".khabib").animate({
+  $(".vader").click(function(){
+    player="vader"
+    $(".vader").css("position","fixed"); 
+    $(".vader").animate({
       left: "+=800px"
     }, "normal");
-    $(".khabib").animate({
-      top: "-=162px"
+    $(".vader").animate({
+      top: "48"
     }, "normal");
-    $(".khabib").off("click");
+    $(".vader").off("click");
+    var removed = fighter.splice(1, 1);
+    match();
   });
 
-  $(".tony").click(function(){
+  $(".yoda").click(function(){
+    player="yoda"
+    $(".yoda").css("position","fixed"); 
   
-    $(".tony").animate({
-      left: "+=800px"
+    $(".yoda").animate({
+      left: "800px",top: "48px"
+
     }, "normal");
-    $(".tony").animate({
-      top: "-=324px"
-    }, "normal");
-    $(".tony").off("click");
+    
+      
+    
+    $(".yoda").off("click");
+    var removed = fighter.splice(2, 1);
+    match();
   });
 
 
-  $(".dustin").click(function(){
-  
-    $(".dustin").animate({
+  $(".luke").click(function(){
+    player="luke"
+    $(".luke").css("position","fixed"); 
+    $(".luke").animate({
       left: "+=800px"
     }, "normal");
-    $(".dustin").animate({
-      top: "-=486px"
+    $(".luke").animate({
+      top: "48px"
     }, "normal");
-    $(".dustin").off("click");
+    $(".luke").off("click");
+    var removed = fighter.splice(3, 1);
+    match();
   });
 
 
@@ -129,10 +143,21 @@ $(".conor").on("click",function(){
 
 
 function match(){
+  $("."+fighter[0]).css("position","fixed"); 
+  $("."+fighter[0]).off("click");
+  $("."+fighter[0]).animate({
+    top: "48px",left:"75px"
+  }, "normal");
+  $("."+fighter[0]).css("visibility","visible"); 
+  if(fighter.length>1){
+for(i=1;i<fighter.length;i++){
+$("."+fighter[i]).css("visibility","hidden");
 
+}
 }
 
 
+}
 
 
   
@@ -158,7 +183,10 @@ function match(){
 
 
 function blink(){
-    $("#blink").fadeOut() ;
+    
+  $("#blink").fadeOut() ;
     $("#blink").fadeIn() ;
+    $("#blink2").fadeOut() ;
+    $("#blink2").fadeIn() ;
     
 }

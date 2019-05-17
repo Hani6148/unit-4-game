@@ -1,5 +1,5 @@
 #wall{
-    background-image: url(../images/UFC5.jpg);
+    background-image: url(../images/star1.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     transition: background  3s ease;
@@ -22,6 +22,21 @@
     font-size: x-large;
     z-index: 1000;
 }
+#blink2{
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 450px;
+    height: 100px;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: springgreen;
+    font-size: x-large;
+    z-index: 1000;
+    visibility: hidden;
+}
 
 .car{
     width: inherit;
@@ -39,7 +54,7 @@
 .card-title{
     font-family: 'Anton', sans-serif;
 
-    color:goldenrod;
+    color: lightslategrey;
 
     font-size: x-large;
     font-weight: bold;
@@ -48,4 +63,6 @@
     background-color: lightgray;
     z-index: 1000;
     opacity: 0.9;
+
 }
+
