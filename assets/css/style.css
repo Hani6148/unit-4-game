@@ -7,6 +7,24 @@
     
 
 }
+#inst{
+    visibility: hidden;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 450px;
+    height: 100px;
+    background-color: antiquewhite;
+    
+    
+    z-index: 1000;
+}
+#cardb{
+    background-color: aliceblue ;
+}
+
 
 #blink{
     background-color: transparent;
@@ -37,6 +55,7 @@
     z-index: 1000;
     visibility: hidden;
 }
+
 
 .car{
     width: inherit;
