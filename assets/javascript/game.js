@@ -1,49 +1,15 @@
 
 var fighter = ["vitiate", "vader", "yoda", "luke"];
 var player = "";
-var opponent = "";
+
+var opponent="";
 var pick = 0;
 var selector = "";
 index = 0;
 var laser = document.createElement("audio");
   var song = document.createElement("audio");
   var hover = document.createElement("audio");
-setInterval(blink, 1200);
-$("#blink").on("click", changeWall);
-
-function changeWall() {
-  $("#blink").remove();
-  $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-  gamescreen();
-
-}
-
-
-function gamescreen() {
-  setTimeout(function () { $("#inst").css("visibility", "visible"); }, 1000);
-  $("#go").on("click", function () {
-    setTimeout(function () { $("#blink2").css("visibility", "visible"); }, 500);
-    $("#inst").css("visibility", "hidden");
-    pickPlayer();
-  });
-  $(".car").css("visibility", "visible");
-  
-  hover.setAttribute("src", "assets/sound/hover.wav");
-  laser.setAttribute("src", "assets/sound/laser.mp3");
-  laser.play();
-  
-  
-
-
-  song.setAttribute("src", "assets/sound/starmain.mp3");
-
-  song.play();
-  hover.play();
-
-
-
-
+  if(pick==0){
   $("#vitiate").hover(function () {
     hover.play();
     $("#vitiate").css("background-color", "springgreen");
@@ -98,25 +64,66 @@ function gamescreen() {
     $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
   });
+}
+setInterval(blink, 1200);
+$("#blink").on("click", changeWall);
+
+
+function changeWall() {
+  $("#blink").remove();
+  $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+  gamescreen();
+
+}
+
+
+function gamescreen() {
+  setTimeout(function () { $("#inst").css("visibility", "visible"); }, 1000);
+  $("#go").on("click", function () {
+    setTimeout(function () { $("#blink2").css("visibility", "visible"); }, 500);
+    $("#inst").css("visibility", "hidden");
+    pickPlayer();
+  });
+  $(".car").css("visibility", "visible");
+  
+  hover.setAttribute("src", "assets/sound/hover.wav");
+  laser.setAttribute("src", "assets/sound/laser.mp3");
+  laser.play();
+  
+  
+
+
+  song.setAttribute("src", "assets/sound/starmain.mp3");
+
+  song.play();
+  hover.play();
+
+
+
+
 
 }
 
 
 function pickPlayer() {
-  for (i = 0; i < fighter.length; i++) {
-    $("#" + fighter[i]).on("click", function () {
+ 
 
+  for (i = 0; i < fighter.length; i++) {
+    
+    $("#" + fighter[i]).on("click", function (event) {
+      
       laser.play();
       if (pick == 0) {
         player = $(this).attr("id");
-        console.log(player);
+        console.log(event.target);
+        $(document).off("click");
         positionPlayer();
       }
-      if(pick>0){
-        player = $(this).attr("id");
-        positionEnnemy();
+      
+
       }
-    });
+    );
   }
 }
 
@@ -129,6 +136,7 @@ function pickPlayer() {
 
 
 function positionPlayer() {
+  
   var char="";
   pick++;
   console.log(player);
@@ -178,18 +186,61 @@ function positionPlayer() {
     left: "800px", top: "48px"
 
   }, "normal");
-  pick++;
+  
+ 
+pickEnnemy();
+}
 
-pickPlayer();
+
+function positionEnnemy(){
+  $("#blink2").css("visibility","hidden")
+  fighter.splice(fighter.indexOf(opponent), 1);
+  $("#" + opponent).css("position", "fixed");
+  $("#" + opponent).animate({
+    left: "160px", top: "48px"
+
+  }, "normal");
+  for(i=0;i<fighter.length;i++){
+    $("#" + fighter[i]).off("click");
+  }
+  if(fighter.length==2)
+  {
+  $("#" + fighter[0]).css("position", "fixed");
+  $("#" + fighter[0]).animate({
+    left: "300px", top: "500px"
+
+  }, "normal");
+  $("#" + fighter[1]).css("position", "fixed");
+  $("#" + fighter[1]).animate({
+    left: "700px", top: "500px"
+
+  }, "normal");
+}
+  
 }
 
 
 
+ 
+function pickEnnemy() {
+  for (i = 0; i < fighter.length; i++) {
+    
+    $("#" + fighter[i]).on("click", function (event) {
+      
+      laser.play();
+      {
+        opponent = $(this).attr("id");
+        console.log(event.target);
+        
+        positionEnnemy();
+      }
+      
 
+      }
+    );
+  }
 
-
-
-
+}
 
 
 
