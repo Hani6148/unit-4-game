@@ -1,7 +1,9 @@
 
+
+
 var fighter = ["vitiate", "vader", "yoda", "luke"];
 var player = "";
-
+var win=0;
 var opponent="";
 var pick = 0;
 var selector = "";
@@ -9,11 +11,13 @@ index = 0;
 var laser = document.createElement("audio");
   var song = document.createElement("audio");
   var hover = document.createElement("audio");
+  var fire = document.createElement("audio");
+  fire.setAttribute("src","assets/sound/fire.mp3");
 
   var vitiate={
     name:"vitiate",
     health:200,
-    power:10,
+    power:20,
     defence:5,
     attack:function(ennemy){
       ennemy.health -= this.power;
@@ -27,8 +31,8 @@ var laser = document.createElement("audio");
     
     var vader={
       name:"vader",
-      health:150,
-      power:10,
+      health:250,
+      power:30,
       defence:5,
       attack:function(ennemy){
         ennemy.health -= this.power;
@@ -120,48 +124,7 @@ var laser = document.createElement("audio");
     $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
   });
-//   $("#vader").hover(function () {
-//     hover.play();
-//     $("#vader").css("background-color", "springgreen");
-//     $('#vader ').css("color", "blue");
-//     $("#wall").css("background-image", "url(assets/images/vaderw.jpg");
-//     $('#vader').css("cursor", "pointer");
 
-//   }, function () {
-//     $("#vader").css("background-color", "lightgray");
-//     $('#vader').css("color", "black");
-//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-//   });
-//   $("#yoda").hover(function () {
-//     hover.play();
-//     $("#yoda").css("background-color", "springgreen");
-//     $('#yoda').css("color", "blue");
-//     $("#wall").css("background-image", "url(assets/images/yodaw.jpg");
-//     $('#yoda').css("cursor", "pointer");
-
-//   }, function () {
-    
-//     $("#yoda").css("background-color", "lightgray");
-//     $('#yoda').css("color", "black");
-//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-//   });
-
-//   $("#luke").hover(function () {
-//     hover.play();
-//     $("#luke").css("background-color", "springgreen");
-//     $('#luke').css("color", "blue");
-//     $("#wall").css("background-image", "url(assets/images/lukew.jpg");
-//     $('#luke').css("cursor", "pointer");
-
-//   }, function () {
-//     $("#luke").css("background-color", "lightgray");
-//     $('#luke').css("color", "black");
-//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-//   });
-// }
 setInterval(blink, 1200);
 $("#blink").on("click", changeWall);
 
@@ -253,32 +216,7 @@ function positionPlayer() {
   fighter.splice(fighter.indexOf(player), 1);
   console.log(fighter);
 
-    // $("#" + fighter[0]).css("background-color", "red");
-    // $("#" + fighter[0]).hover(function (){
-    //   $("#" + fighter[0]).css("background-color", "red");
-     
-    // },function() {
-     
-//       $("#" + fighter[0]).css("background-color", "red");
-//     });
-
-//     $("#" + fighter[1]).css("background-color", "red")
-//     $("#" + fighter[1]).hover(function(){
-//       $("#" + fighter[1]).css("background-color", "red")
-      
-//     },function () {
-      
-//     $("#" + fighter[1]).css("background-color", "red");
-//   });
-//   $("#" + fighter[2]).css("background-color", "red");
-//   $("#" + fighter[2]).hover(function(){
     
-//     $("#" + fighter[2]).css("background-color", "red");
-//   },function () {
-    
-//   $("#" + fighter[2]).css("background-color", "red");
-// });
-
     
 
 
@@ -323,11 +261,7 @@ function positionEnnemy(){
 
   }, "normal");
 }
-if(fighter.length==1){
-  $("#" + fighter[0]).css("position", "fixed");
-  $("#" + fighter[0]).animate({
-    left: "500px", top: "500px" }, "normal");
-}
+
 
   fight();
 }
@@ -335,7 +269,7 @@ if(fighter.length==1){
 
 function fight(){
   $(".carp").on("click", function () {
-          laser.play();
+          fire.play();
           eval(player).attack(eval(opponent));
           eval(player).attackBack(eval(opponent));
            var playerHealth = $("#"+player+"H");
@@ -344,12 +278,33 @@ function fight(){
           
            playerHealth.html("<br>"+eval(player).health);
            opponentHealth.html("<br>"+eval(opponent).health);
+           
+           
+           if(eval(player).health<=0){
+            $("#loss").css("visibility", "visible");
+            $("#retry").on("click", function () {
+              window.location.reload();
+            });
+           }
+           
+           
 
-           if(eval(opponent).health==0)
+           if(eval(opponent).health<=0)
            {
+            win++;
             $("#"+opponent).css("visibility","hidden");
+            $("#" + player).off("click");
             pickPlayer();
            }
+           if(win==3){
+           
+            $("#vict").css("visibility", "visible");
+            $("#again").on("click", function () {
+              window.location.reload();
+            });
+             
+           }
+
   });
 }
  
@@ -381,3 +336,4 @@ function blink() {
   $("#blink2").fadeIn();
 
 }
+
