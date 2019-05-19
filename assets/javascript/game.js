@@ -9,62 +9,159 @@ index = 0;
 var laser = document.createElement("audio");
   var song = document.createElement("audio");
   var hover = document.createElement("audio");
-  if(pick==0){
+
+  var vitiate={
+    name:"vitiate",
+    health:200,
+    power:10,
+    defence:5,
+    attack:function(ennemy){
+      ennemy.health -= this.power;
+    },
+    attackBack:function(ennemy){
+      this.health -= ennemy.defence;
+    }
+
+    }
+
+    
+    var vader={
+      name:"vader",
+      health:150,
+      power:10,
+      defence:5,
+      attack:function(ennemy){
+        ennemy.health -= this.power;
+      },
+      attackBack:function(ennemy){
+        this.health -= ennemy.defence;
+      }
+  
+      }
+      var yoda={
+        name:"yoda",
+        health:100,
+        power:10,
+        defence:5,
+        attack:function(ennemy){
+          ennemy.health -= this.power;
+        },
+        attackBack:function(ennemy){
+          this.health -= ennemy.defence;
+        }
+    
+        }
+        var luke={
+          name:"luke",
+          health:200,
+          power:10,
+          defence:5,
+          attack:function(ennemy){
+            ennemy.health -= this.power;
+          },
+          attackBack:function(ennemy){
+            this.health -= ennemy.defence;
+          }
+      
+          }
+
+
+
+ 
   $("#vitiate").hover(function () {
     hover.play();
-    $("#vitiate").css("background-color", "springgreen");
-    $('#vitiate').css("color", "blue");
+    
+    
     $("#wall").css("background-image", "url(assets/images/vitiatew.jpg");
-    $('#vitiate').css("cursor", "pointer");
-
-  }, function () {
-    $("#vitiate").css("background-color", "lightgray");
-    $('#vitiate').css("color", "black");
-    $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-  });
-  $("#vader").hover(function () {
-    hover.play();
-    $("#vader").css("background-color", "springgreen");
-    $('#vader ').css("color", "blue");
-    $("#wall").css("background-image", "url(assets/images/vaderw.jpg");
-    $('#vader').css("cursor", "pointer");
-
-  }, function () {
-    $("#vader").css("background-color", "lightgray");
-    $('#vader').css("color", "black");
-    $("#wall").css("background-image", "url(assets/images/star2.jpg");
-
-  });
-  $("#yoda").hover(function () {
-    hover.play();
-    $("#yoda").css("background-color", "springgreen");
-    $('#yoda').css("color", "blue");
-    $("#wall").css("background-image", "url(assets/images/yodaw.jpg");
-    $('#yoda').css("cursor", "pointer");
+    
 
   }, function () {
     
-    $("#yoda").css("background-color", "lightgray");
-    $('#yoda').css("color", "black");
+    $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+  });
+
+
+  $("#vader").hover(function () {
+    hover.play();
+    
+    
+    $("#wall").css("background-image", "url(assets/images/vaderw.jpg");
+    
+
+  }, function () {
+    
+    $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+  });
+
+  $("#yoda").hover(function () {
+    hover.play();
+    
+    
+    $("#wall").css("background-image", "url(assets/images/yodaw.jpg");
+    
+
+  }, function () {
+    
     $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
   });
 
   $("#luke").hover(function () {
     hover.play();
-    $("#luke").css("background-color", "springgreen");
-    $('#luke').css("color", "blue");
+    
+    
     $("#wall").css("background-image", "url(assets/images/lukew.jpg");
-    $('#luke').css("cursor", "pointer");
+    
 
   }, function () {
-    $("#luke").css("background-color", "lightgray");
-    $('#luke').css("color", "black");
+    
     $("#wall").css("background-image", "url(assets/images/star2.jpg");
 
   });
-}
+//   $("#vader").hover(function () {
+//     hover.play();
+//     $("#vader").css("background-color", "springgreen");
+//     $('#vader ').css("color", "blue");
+//     $("#wall").css("background-image", "url(assets/images/vaderw.jpg");
+//     $('#vader').css("cursor", "pointer");
+
+//   }, function () {
+//     $("#vader").css("background-color", "lightgray");
+//     $('#vader').css("color", "black");
+//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+//   });
+//   $("#yoda").hover(function () {
+//     hover.play();
+//     $("#yoda").css("background-color", "springgreen");
+//     $('#yoda').css("color", "blue");
+//     $("#wall").css("background-image", "url(assets/images/yodaw.jpg");
+//     $('#yoda').css("cursor", "pointer");
+
+//   }, function () {
+    
+//     $("#yoda").css("background-color", "lightgray");
+//     $('#yoda').css("color", "black");
+//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+//   });
+
+//   $("#luke").hover(function () {
+//     hover.play();
+//     $("#luke").css("background-color", "springgreen");
+//     $('#luke').css("color", "blue");
+//     $("#wall").css("background-image", "url(assets/images/lukew.jpg");
+//     $('#luke').css("cursor", "pointer");
+
+//   }, function () {
+//     $("#luke").css("background-color", "lightgray");
+//     $('#luke').css("color", "black");
+//     $("#wall").css("background-image", "url(assets/images/star2.jpg");
+
+//   });
+// }
 setInterval(blink, 1200);
 $("#blink").on("click", changeWall);
 
@@ -107,25 +204,35 @@ function gamescreen() {
 
 
 function pickPlayer() {
+  
+  
+
+  
+  $(".car1").on("click", function () {
+    if(pick==0){
+      
+    laser.play();
+    player=$(this).attr("id");
+    $("#" + player).off("click");
+    
+    $(this).attr("class","mb-3 carp");
+    console.log(player);
+    positionPlayer();
+    }
+    else {
+      laser.play();
+      opponent=$(this).attr("id");
+      
+    $("#"+opponent).attr("class","mb-3 care");
+      
+    console.log(opponent);
+    console.log(opponent.health);
+    positionEnnemy();
+    }
+  });
+  }
  
 
-  for (i = 0; i < fighter.length; i++) {
-    
-    $("#" + fighter[i]).on("click", function (event) {
-      
-      laser.play();
-      if (pick == 0) {
-        player = $(this).attr("id");
-        console.log(event.target);
-        $(document).off("click");
-        positionPlayer();
-      }
-      
-
-      }
-    );
-  }
-}
 
 
 
@@ -136,42 +243,41 @@ function pickPlayer() {
 
 
 function positionPlayer() {
-  
-  var char="";
   pick++;
+  var char="";
+  
   console.log(player);
-  $("#" + player).hover("", function () {
-    $("#" + player).css("background-color", "springgreen");
-  });
+ 
 
 
   fighter.splice(fighter.indexOf(player), 1);
   console.log(fighter);
-    $("#" + fighter[0]).css("background-color", "red");
-    $("#" + fighter[0]).hover(function (){
-      $("#" + fighter[0]).css("background-color", "red");
-     
-    },function() {
-     
-      $("#" + fighter[0]).css("background-color", "red");
-    });
 
-    $("#" + fighter[1]).css("background-color", "red")
-    $("#" + fighter[1]).hover(function(){
-      $("#" + fighter[1]).css("background-color", "red")
+    // $("#" + fighter[0]).css("background-color", "red");
+    // $("#" + fighter[0]).hover(function (){
+    //   $("#" + fighter[0]).css("background-color", "red");
+     
+    // },function() {
+     
+//       $("#" + fighter[0]).css("background-color", "red");
+//     });
+
+//     $("#" + fighter[1]).css("background-color", "red")
+//     $("#" + fighter[1]).hover(function(){
+//       $("#" + fighter[1]).css("background-color", "red")
       
-    },function () {
+//     },function () {
       
-    $("#" + fighter[1]).css("background-color", "red");
-  });
-  $("#" + fighter[2]).css("background-color", "red");
-  $("#" + fighter[2]).hover(function(){
+//     $("#" + fighter[1]).css("background-color", "red");
+//   });
+//   $("#" + fighter[2]).css("background-color", "red");
+//   $("#" + fighter[2]).hover(function(){
     
-    $("#" + fighter[2]).css("background-color", "red");
-  },function () {
+//     $("#" + fighter[2]).css("background-color", "red");
+//   },function () {
     
-  $("#" + fighter[2]).css("background-color", "red");
-});
+//   $("#" + fighter[2]).css("background-color", "red");
+// });
 
     
 
@@ -187,8 +293,8 @@ function positionPlayer() {
 
   }, "normal");
   
- 
-pickEnnemy();
+ pickPlayer();
+
 }
 
 
@@ -202,6 +308,7 @@ function positionEnnemy(){
   }, "normal");
   for(i=0;i<fighter.length;i++){
     $("#" + fighter[i]).off("click");
+
   }
   if(fighter.length==2)
   {
@@ -216,31 +323,37 @@ function positionEnnemy(){
 
   }, "normal");
 }
-  
+if(fighter.length==1){
+  $("#" + fighter[0]).css("position", "fixed");
+  $("#" + fighter[0]).animate({
+    left: "500px", top: "500px" }, "normal");
+}
+
+  fight();
 }
 
 
+function fight(){
+  $(".carp").on("click", function () {
+          laser.play();
+          eval(player).attack(eval(opponent));
+          eval(player).attackBack(eval(opponent));
+           var playerHealth = $("#"+player+"H");
+           var opponentHealth = $("#"+opponent+"H");
 
+          
+           playerHealth.html("<br>"+eval(player).health);
+           opponentHealth.html("<br>"+eval(opponent).health);
+
+           if(eval(opponent).health==0)
+           {
+            $("#"+opponent).css("visibility","hidden");
+            pickPlayer();
+           }
+  });
+}
  
-function pickEnnemy() {
-  for (i = 0; i < fighter.length; i++) {
-    
-    $("#" + fighter[i]).on("click", function (event) {
-      
-      laser.play();
-      {
-        opponent = $(this).attr("id");
-        console.log(event.target);
-        
-        positionEnnemy();
-      }
-      
 
-      }
-    );
-  }
-
-}
 
 
 

@@ -84,4 +84,24 @@
     opacity: 0.9;
 
 }
+.card:hover{
+    background-color: springgreen;
+    cursor: pointer;
+}
+
+.carp{
+    background-color: springgreen ;
+
+}
+.carp:hover{
+    cursor: pointer;
+}
+.care{
+    background-color: red;
+
+}
+.care:hover{
+    background-color: red;
+    cursor: pointer;
+}
 
