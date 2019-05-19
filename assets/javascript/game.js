@@ -296,7 +296,7 @@ function fight(){
             $("#" + player).off("click");
             pickPlayer();
            }
-           if(win==3){
+           if(win==4){
            
             $("#vict").css("visibility", "visible");
             $("#again").on("click", function () {
